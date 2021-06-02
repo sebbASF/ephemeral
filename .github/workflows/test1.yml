@@ -25,18 +25,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo 1
-          echo 1a >&2
-          echo 2
-          echo 2a >&2
-          echo 3
-          echo 3a >&2
-          echo 4
-          echo 4a >&2
+          date +"1: %s"
+          date +"1a: %s" >&2
+          date +"2: %s"
+          date +"2a: %s" >&2
+          date +"3: %s"
+          date +"3a: %s" >&2
+          date +"4: %s"
+          date +"4a: %s" >&2
+          date +"5: %s"
+          date +"5a: %s" >&2
+          date +"6: %s"
+          date +"6a: %s" >&2
+
