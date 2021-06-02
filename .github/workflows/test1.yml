@@ -53,4 +53,5 @@ jobs:
 
       - name: Python
         run: |
+          cat main.py
           ./main.py
