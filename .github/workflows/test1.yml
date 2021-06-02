@@ -35,10 +35,6 @@ jobs:
           echo +"3a: %s" >&2
           echo +"4: %s"
           echo +"4a: %s" >&2
-          echo +"5: %s"
-          echo +"5a: %s" >&2
-          echo +"6: %s"
-          echo +"6a: %s" >&2
 
       - name: Dates
         run: |
@@ -50,8 +46,3 @@ jobs:
           date +"3a: %s" >&2
           date +"4: %s"
           date +"4a: %s" >&2
-          date +"5: %s"
-          date +"5a: %s" >&2
-          date +"6: %s"
-          date +"6a: %s" >&2
-
