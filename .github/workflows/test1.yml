@@ -23,10 +23,24 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+#      - uses: actions/checkout@v2
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Echoes
+        run: |
+          echo +"1: %s"
+          echo +"1a: %s" >&2
+          echo +"2: %s"
+          echo +"2a: %s" >&2
+          echo +"3: %s"
+          echo +"3a: %s" >&2
+          echo +"4: %s"
+          echo +"4a: %s" >&2
+          echo +"5: %s"
+          echo +"5a: %s" >&2
+          echo +"6: %s"
+          echo +"6a: %s" >&2
+
+      - name: Dates
         run: |
           date +"1: %s"
           date +"1a: %s" >&2
