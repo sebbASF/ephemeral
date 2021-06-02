@@ -54,4 +54,7 @@ jobs:
       - name: Python
         run: |
           cat main.py
+          echo ""
+          cat sub.py
+          echo ""
           ./main.py
