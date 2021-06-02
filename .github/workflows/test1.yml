@@ -46,3 +46,7 @@ jobs:
           date +"3a: %s" >&2
           date +"4: %s"
           date +"4a: %s" >&2
+
+      - name: Python
+        run: |
+          ./main.py
