@@ -32,6 +32,19 @@ jobs:
       - uses: leafo/gh-actions-lua@v8.0.0
         with: 
           luaVersion: "5.2.4"
+      - uses: getong/elasticsearch-action@v1.2
+        with:
+          elasticsearch version: '7.6.1'
+          host port: 9200
+          container port: 9200
+          host node port: 9300
+          node port: 9300
+          discovery type: 'single-node'
+      - name: Elastic
+        uses: wei/curl@master
+        with:
+          args: http://locahost:9200/_cluster/health/?level=indices&pretty
+
       - name: Lunar
         run: |
           lua -v
