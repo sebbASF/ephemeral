@@ -43,11 +43,12 @@ jobs:
       - name: Elastic
         uses: wei/curl@master
         with:
-          args: http://localhost:9200/_cluster/health/?level=indices
+          args: http://localhost:9300/_cluster/health/?level=indices
 
       - name: Lunar
         run: |
           lua -v
+          curl -V
       - name: Echoes
         run: |
           echo +"1: %s"
