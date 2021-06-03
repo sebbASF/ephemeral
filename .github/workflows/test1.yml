@@ -20,6 +20,22 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    services:
+      elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
+        env:
+          discovery.type: single-node
+        options: >-
+          --health-cmd "curl http://localhost:9200/_cluster/health"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+        ports:
+        # <port on host>:<port on container>
+        - 9200:9200
+      redis:
+        image: redis
+        options: --entrypoint redis-server
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -32,24 +48,25 @@ jobs:
       - uses: leafo/gh-actions-lua@v8.0.0
         with: 
           luaVersion: "5.2.4"
-      - uses: getong/elasticsearch-action@v1.2
-        with:
-          elasticsearch version: '7.6.1'
-          host port: 9200
-          container port: 9200
-          host node port: 9300
-          node port: 9300
-          discovery type: 'single-node'
+#      - uses: getong/elasticsearch-action@v1.2
+#        with:
+#          elasticsearch version: '7.6.1'
+#          host port: 9200
+#          container port: 9200
+#          host node port: 9300
+#          node port: 9300
+#          discovery type: 'single-node'
       - name: Elastic
-        uses: wei/curl@master
-        with:
-          args: http://localhost:9300/_cluster/health/?level=indices
-
+        run: |
+          sleep 10
+          curl -X GET 'http://localhost:9200/_cluster/health/?level=indices'
       - name: Lunar
+        if: always()
         run: |
           lua -v
           curl -V
       - name: Echoes
+        if: always()
         run: |
           echo +"1: %s"
           echo +"1a: %s" >&2
@@ -61,6 +78,7 @@ jobs:
           echo +"4a: %s" >&2
 
       - name: Dates
+        if: always()
         run: |
           date +"1: %s"
           date +"1a: %s" >&2
@@ -72,6 +90,7 @@ jobs:
           date +"4a: %s" >&2
 
       - name: Python
+        if: always()
         run: |
           cat main.py
           echo ""
