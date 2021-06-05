@@ -61,7 +61,7 @@ jobs:
       - name: Elastic
         run: |
           sleep 10
-          curl -X GET 'http://localhost:9200/_cluster/health/?level=indices'
+          curl -X GET 'http://elastic:changeme@localhost:9200/_cluster/health/?level=indices'
       - name: Lunar
         if: always()
         run: |
