@@ -23,6 +23,9 @@ jobs:
     services:
       apache:
         image: httpd
+        ports:
+          - 80:80
+          - 8080:8080
       elasticsearch:
 #         image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
 #         image: docker.elastic.co/elasticsearch/elasticsearch:6.8.16
@@ -66,6 +69,8 @@ jobs:
           sleep 10
           curl -X GET 'http://elastic:changeme@localhost:9200/_cluster/health/?level=indices'
           curl -X GET 'http://localhost:9200/_cluster/health/'
+          curl -X GET 'http://localhost/'
+          curl -X GET 'http://localhost:8080/'
       - name: Lunar
         if: always()
         run: |
