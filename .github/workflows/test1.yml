@@ -21,6 +21,8 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
+      apache:
+        image: apache
       elasticsearch:
 #         image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
 #         image: docker.elastic.co/elasticsearch/elasticsearch:6.8.16
