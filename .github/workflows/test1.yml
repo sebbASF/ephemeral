@@ -53,9 +53,9 @@ jobs:
         with:
           python-version: '3.7'
           architecture: x64
-      - uses: leafo/gh-actions-lua@v8.0.0
-        with: 
-          luaVersion: "5.2.4"
+#       - uses: leafo/gh-actions-lua@v8.0.0
+#         with: 
+#           luaVersion: "5.2.4"
 #      - uses: getong/elasticsearch-action@v1.2
 #        with:
 #          elasticsearch version: '7.6.1'
@@ -64,18 +64,24 @@ jobs:
 #          host node port: 9300
 #          node port: 9300
 #          discovery type: 'single-node'
-      - name: Elastic
+      - name: Elastic1
         run: |
           sleep 10
-          curl -X GET 'http://elastic:changeme@localhost:9200/_cluster/health/?level=indices'
-          curl -X GET 'http://localhost:9200/_cluster/health/'
-          curl -X GET 'http://localhost/'
-          curl -X GET 'http://localhost:8080/'
-      - name: Lunar
-        if: always()
+          curl -sqX GET 'http://elastic:changeme@localhost:9200/_cluster/health/?level=indices'
+      - name: Elastic2
         run: |
-          lua -v
-          curl -V
+          curl -sqX GET 'http://localhost:9200/_cluster/health/'
+      - name: Elastic3
+        run: |
+          curl -sqX GET 'http://localhost/'
+      - name: Elastic4
+        run: |
+          curl -sqX GET 'http://localhost:8080/'
+#       - name: Lunar
+#         if: always()
+#         run: |
+#          lua -v
+#          curl -V
       - name: Echoes
         if: always()
         run: |
