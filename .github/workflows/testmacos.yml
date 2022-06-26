@@ -10,6 +10,6 @@ jobs:
     steps:
       - name: release
         run: |
-          more /etc/*release | cat || true
           openssl version || true
-          find / -name libcrypto.dylib* -ls
+          find /usr \( -name libcrypto.dylib -o -name libcrypto.*.dylib \) -ls 2>/dev/null || true
+          find /opt \( -name libcrypto.dylib -o -name libcrypto.*.dylib \) -ls 2>/dev/null || true
