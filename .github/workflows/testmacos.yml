@@ -10,6 +10,6 @@ jobs:
     steps:
       - name: release
         run: |
-          lsb_release -a
-          openssl version
+          more /etc/*release | cat || true
+          openssl version || true
           find / -name libcrypto.dylib* -ls
