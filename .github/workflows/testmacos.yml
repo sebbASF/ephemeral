@@ -1,0 +1,13 @@
+name: Testmac
+
+# Controls when the action will run. 
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: release
+        run: |
+          lsb_release -a
