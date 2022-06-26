@@ -11,3 +11,5 @@ jobs:
       - name: release
         run: |
           lsb_release -a
+          openssl version
+          find / -name libcrypto.dylib* -ls
