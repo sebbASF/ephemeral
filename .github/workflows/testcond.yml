@@ -31,5 +31,5 @@ jobs:
     #   run: echo "2 $argLine ${{ matrix.os }}"
     #   if: always()
     - name: three
-      run: echo 3 ${{ env.argLine }} ${{ matrix.os }} ${{ jobs.build.argline.env.argLine }}
+      run: echo 3 ${{ env.argLine }} ${{ matrix.os }} ${{ job.build.argline.env.argLine }}
       if: always()
