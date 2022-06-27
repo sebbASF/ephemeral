@@ -13,10 +13,11 @@ jobs:
         java: [ 8, 11 ]
 
     env:
-      argLine: ''
+      argLine: -Dx=y
     steps:
     - name: Set argline
-      run: echo $argLine
+      run: |
+        echo $argLine - ${{ matrix.java }} - ${{ argline }} - ${{ env.argline }}
       env:
         argLine: -DargLine="--illegal-access=deny"
       if: ${{ matrix.java != '8' }}
