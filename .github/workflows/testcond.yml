@@ -1,0 +1,25 @@
+name: TestCond
+
+# Controls when the action will run. 
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        java: [ 8, 11 ]
+
+    steps:
+    - name: Set argline
+      run: echo $argLine
+      env:
+        argLine: -DargLine="--illegal-access=deny"
+      if: ${{ matrix.java != '8' }}
+    - name: Build with Maven
+      run: |
+        echo $argLine || true
+        echo "$argLine" || true
+        echo ${{ env.argLine }}  || true
