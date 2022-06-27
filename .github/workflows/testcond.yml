@@ -24,9 +24,9 @@ jobs:
       env:
         argLine: -DargLine="--illegal-access=deny"
       if: ${{ matrix.java != '8' }}
-    # - name: one
-    #   run: echo 1 $argLine ${{ matrix.os }}
-    #   if: always()
+    - name: one
+      run: env
+      if: always()
     # - name: two
     #   run: echo "2 $argLine ${{ matrix.os }}"
     #   if: always()
