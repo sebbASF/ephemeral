@@ -21,11 +21,11 @@ jobs:
         argLine: -DargLine="--illegal-access=deny"
       if: ${{ matrix.java != '8' }}
     - name: one
-      run: echo 1 $argLine
+      run: echo 1 $argLine ${{ matrix.os }}
       if: always()
     - name: two
-      run: echo "2 $argLine"
+      run: echo "2 $argLine ${{ matrix.os }}"
       if: always()
     - name: three
-      run: echo 3 ${{ env.argLine }}
+      run: echo 3 ${{ env.argLine }} ${{ matrix.os }}
       if: always()
