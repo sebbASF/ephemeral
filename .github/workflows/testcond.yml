@@ -18,18 +18,18 @@ jobs:
     env:
       argLine: -Dx=y
     steps:
-    - name: Set argline
+    - name: argline
       run: |
         echo $argLine - ${{ matrix.java }} - ${{ env.argline }}
       env:
         argLine: -DargLine="--illegal-access=deny"
       if: ${{ matrix.java != '8' }}
-    - name: one
-      run: echo 1 $argLine ${{ matrix.os }}
-      if: always()
-    - name: two
-      run: echo "2 $argLine ${{ matrix.os }}"
-      if: always()
+    # - name: one
+    #   run: echo 1 $argLine ${{ matrix.os }}
+    #   if: always()
+    # - name: two
+    #   run: echo "2 $argLine ${{ matrix.os }}"
+    #   if: always()
     - name: three
-      run: echo 3 ${{ env.argLine }} ${{ matrix.os }}
+      run: echo 3 ${{ env.argLine }} ${{ matrix.os }} ${{ jobs.build.argline.env.argLine }}
       if: always()
