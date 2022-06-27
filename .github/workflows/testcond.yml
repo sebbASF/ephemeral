@@ -12,14 +12,20 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         java: [ 8, 11 ]
 
+    env:
+      argLine: ''
     steps:
     - name: Set argline
       run: echo $argLine
       env:
         argLine: -DargLine="--illegal-access=deny"
       if: ${{ matrix.java != '8' }}
-    - name: Build with Maven
-      run: |
-        echo $argLine || true
-        echo "$argLine" || true
-        echo ${{ env.argLine }}  || true
+    - name: one
+      run: echo 1 $argLine
+      if: always()
+    - name: two
+      run: echo "2 $argLine"
+      if: always()
+    - name: three
+      run: echo 3 ${{ env.argLine }}
+      if: always()
