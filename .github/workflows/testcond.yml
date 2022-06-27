@@ -3,6 +3,9 @@ name: TestCond
 # Controls when the action will run. 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - '**/workflows/testcond.yml'
 
 jobs:
   build:
@@ -17,7 +20,7 @@ jobs:
     steps:
     - name: Set argline
       run: |
-        echo $argLine - ${{ matrix.java }} - ${{ $argline }} - ${{ env.argline }}
+        echo $argLine - ${{ matrix.java }} - ${{ env.argline }}
       env:
         argLine: -DargLine="--illegal-access=deny"
       if: ${{ matrix.java != '8' }}
