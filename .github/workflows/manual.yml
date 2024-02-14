@@ -33,4 +33,5 @@ jobs:
     - name: Send greeting
       run: |
         echo "Hello ${{ inputs.name }}"
+        ls -al
         git status
