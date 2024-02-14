@@ -35,3 +35,6 @@ jobs:
         echo "Hello ${{ inputs.name }}"
         ls -al
         git status
+        date > date.tmp
+        git add .
+        git commit -m Try
