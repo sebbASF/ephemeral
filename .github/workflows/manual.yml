@@ -32,6 +32,8 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: |
+        git config --global user.email "16689231+sebbASF@users.noreply.github.com"
+        git config --global user.name "sebbASF"
         echo "Hello ${{ inputs.name }}"
         ls -al
         git status
